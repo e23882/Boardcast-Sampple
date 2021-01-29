@@ -13,9 +13,18 @@ namespace BoardcastSample
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("1.Boardcast Sercer 2.Boardcast Client");
+            Console.WriteLine("1.Boardcast Server 2.Boardcast Client");
             var input = Console.ReadLine();
-            BoardcastServer server = new BoardcastServer();
+            switch (input)
+            {
+                case "1":
+                    BoardcastServer server = new BoardcastServer();
+                    break;
+                case "2":
+                    BoardcastClient client = new BoardcastClient();
+                    break;
+            }
+            
             Console.Read();
         }
     }
@@ -52,10 +61,10 @@ namespace BoardcastSample
         #endregion
     }
 
-    public  class Boardcast
+    public  class BoardcastClient
     {
         #region Memberfunction
-        public Boardcast()
+        public BoardcastClient()
         {
             Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             IPEndPoint iep = new IPEndPoint(IPAddress.Any, 9050);
